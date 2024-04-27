@@ -19,7 +19,7 @@ type Lista[T any] interface {
 	// "La lista esta vacia".
 	VerPrimero() T
 
-	// VerUltimoobtiene el valor del ultimo de la lista. Si está vacía, entra en pánico con un mensaje
+	// VerUltimo obtiene el valor del ultimo de la lista. Si está vacía, entra en pánico con un mensaje
 	// "La lista esta vacia".
 	VerUltimo() T
 
@@ -36,17 +36,21 @@ type Lista[T any] interface {
 type IteradorLista[T any] interface {
 
 	// Ver actual devuelve el elemento en el que se encuentra el Iterador.
+	// Panic si ya fueron iterados todos los elementos
 	VerActual() T
 
-	// HaySiguiente devuelve si existe el elemento en el que sigue en el Iterador.
+	// HaySiguiente devuelve true si existe el elemento que sigue en el Iterador;
+	// false caso contrario
 	HaySiguiente() bool
 
-	// Siguiente avanza al siguiente elemento
+	// Siguiente avanza al siguiente elemento del iterador.
+	// Panic si ya fueron iterados todos los elementos
 	Siguiente()
 
-	// Insertar
+	// Insertar agrega un elemento entre la posicion actual del iterador y la anterior a la misma.
 	Insertar(T)
 
-	// Borrar
+	// Borrar elimina el elemento actual del iterador y lo devuelve.
+	// Panic si ya fueron iterados todos los elementos.
 	Borrar() T
 }

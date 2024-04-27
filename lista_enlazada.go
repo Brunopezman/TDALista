@@ -26,7 +26,7 @@ func CrearListaEnlazada[T any]() Lista[T] {
 }
 
 func (l *listaEnlazada[T]) Iterador() IteradorLista[T] {
-	return &iterListaEnlazada[T]{anterior: nil, actual: nil}
+	return &iterListaEnlazada[T]{anterior: nil, actual: nil, lista: l}
 }
 
 func (l *listaEnlazada[T]) EstaVacia() bool {

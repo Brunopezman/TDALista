@@ -89,9 +89,12 @@ func (l *listaEnlazada[T]) Largo() int {
 }
 
 func (l *listaEnlazada[T]) Iterar(visitar func(T) bool) {
-	if l.primero != nil {
-		l.primero.siguiente = l.primero
+	actual := l.primero
+	for actual != nil {
+		visitar(actual.dato)
+		actual = actual.siguiente
 	}
+	
 }
 
 func (iter *iterListaEnlazada[T]) VerActual() T {
